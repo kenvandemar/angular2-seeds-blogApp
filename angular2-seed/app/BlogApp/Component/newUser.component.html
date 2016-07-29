@@ -1,0 +1,98 @@
+<h1>{{ title }}</h1>
+<div class="row">
+    <div class="col-md-6 well" >
+        
+        <form [ngFormModel]="form" (ngSubmit)="addNewUser()">
+
+            <fieldset>
+                <legend>User:</legend>
+                <!--Name-->
+                 <div class="form-group">
+                    <label>Name</label>
+                    <input 
+                        [(ngModel)]="user.name"
+                        id="userName"
+                        type="text"
+                        class="form-control"
+                        ngControl="userName"
+                        #userName="ngForm">
+
+                    <div *ngIf="userName.touched && !userName.valid"
+                          class="alert alert-danger">                                             
+                            UserName is required                       
+                    </div>
+                </div>
+
+                <!--Email-->
+                <div class="form-group">
+                    <label>Email</label>
+                    <input 
+                         [(ngModel)]="user.mail"
+                        id="userEmail"
+                        type="text"
+                        class="form-control"
+                        ngControl="userEmail"
+                        #userEmail="ngForm">
+               
+                <div *ngIf="userEmail.touched && !userEmail.valid"
+                          class="alert alert-danger">
+                            Please type valid Email
+                </div>
+                </div>
+                
+
+                <!--Phone-->
+                 <div class="form-group">
+                    <label>Phone</label>
+                    <input 
+                        [(ngModel)]="user.phone"
+                        type="text"
+                        class="form-control"
+                    >
+                </div>
+            </fieldset>
+
+            <!--Address Field-->
+            <fieldset>
+                <legend>Address:</legend>
+                <!--Street-->
+                 <div class="form-group">
+                    <label>Street</label>
+                    <input 
+                        [(ngModel)]="user.address.street"
+                        type="text"
+                        class="form-control">
+                </div>
+
+                <!--Suite-->
+                <div class="form-group">
+                    <label>Suite</label>
+                    <input 
+                        [(ngModel)]="user.address.suite"
+                        type="text"
+                        class="form-control">
+                </div>
+
+                <!--City-->
+                  <div class="form-group">
+                    <label>City</label>
+                    <input   
+                        [(ngModel)]="user.address.city" 
+                        type="text"
+                        class="form-control">
+                </div>
+                <!--ZipCode-->
+                  <div class="form-group">
+                    <label>ZipCode</label>
+                    <input    
+                        [(ngModel)]="user.address.zipcode"       
+                        type="text"
+                        class="form-control">
+                </div>
+            </fieldset>
+            
+            <!--Save-->
+              <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
